@@ -33,8 +33,8 @@ export default function Home() {
           <div className='content'>
               {notes.length === 0 ? (
                   <>
-                      <img src='Notes-bro.png' alt='illustration' className='illustration'/>
-                      <h5>Create your first note!</h5>
+                      <img src='note.jpg' alt='illustration' className='illustration'/>
+                      <h5>Create your note!</h5>
                   </>
               ) : (
                   <div className='notes-list'>

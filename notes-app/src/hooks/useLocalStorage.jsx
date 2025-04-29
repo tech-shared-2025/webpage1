@@ -10,7 +10,7 @@ export function useLocalStorage(key,initialData) {
         else{
             localStorage.setItem(key,JSON.stringify(initialData));
         }
-    },[]);
+    },[key]);
 
     const updateLocalStorage = (newValue) => {
         if(typeof newValue === 'function'){
