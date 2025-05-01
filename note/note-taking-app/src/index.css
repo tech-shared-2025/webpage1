@@ -1,0 +1,21 @@
+.wrapper-class {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .toolbar-class {
+    border-bottom: 1px solid #ccc;
+    padding: 6px;
+  }
+  
+  .editor-class {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  
+  /* Make editor take full height */
+  .public-DraftEditor-content {
+    min-height: 100%;
+  }
