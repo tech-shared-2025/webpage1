@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Paper } from '@mui/material';
-import NotesList from '../NotesList/NotesList';
+import NotesList from '../noteslist/NotesList';
 
 const Sidebar = () => {
   return (
@@ -16,7 +16,7 @@ const Sidebar = () => {
       elevation={0}
     >
       <NotesList />
-    </Box>
+    </Paper>
   );
 };
 

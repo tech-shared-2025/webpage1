@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Box, Grid, Paper } from '@mui/material';
-import Header from '../components/UI/Header';
-import Sidebar from '../components/UI/Sidebar';
-import Editor from '../components/Editor/Editor';
+import Editor from '../editor/Editor';
+import Header from '../UI/Header';
+import Sidebar from '../UI/Sidebar';
+
 import { NotesContext } from '../contexts/NotesContext';
 
 const Home = () => {

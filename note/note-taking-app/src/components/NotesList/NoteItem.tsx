@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { ListItem, ListItemText, ListItemButton, IconButton, Menu, MenuItem, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
 import { MoreVert as MoreVertIcon, Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
-import { NotesContext } from '../../contexts/NotesContext';
-import { Note } from '../../models/Note';
+import { NotesContext } from '../contexts/NotesContext';
+import { Note } from '../models/Note';
 
 interface NoteItemProps {
   note: Note;

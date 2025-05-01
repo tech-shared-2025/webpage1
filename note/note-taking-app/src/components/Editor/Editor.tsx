@@ -3,7 +3,7 @@ import { Box, TextField, Paper } from '@mui/material';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 import { Editor as DraftEditor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { NotesContext } from '../../contexts/NotesContext';
+import { NotesContext } from '../contexts/NotesContext';
 import EditorToolbar from './EditorToolbar';
 
 const Editor = () => {

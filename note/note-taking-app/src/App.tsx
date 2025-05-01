@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import { NotesProvider } from './contexts/NotesContext';
-import Home from './pages/Home';
+import { NotesProvider } from './components/contexts/NotesContext';
+import Home from './components/pages/Home';
 
 const theme = createTheme({
   palette: {

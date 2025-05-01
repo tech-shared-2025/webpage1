@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { List, Typography, Box, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import NoteItem from './NoteItem';
-import { NotesContext } from '../../contexts/NotesContext';
+import { NotesContext } from '../contexts/NotesContext';
 
 const NotesList = () => {
   const { notes, createNote } = useContext(NotesContext);
