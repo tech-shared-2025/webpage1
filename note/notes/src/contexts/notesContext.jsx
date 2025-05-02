@@ -1,68 +1,89 @@
-import { createContext, useContext } from 'react';
-import useLocalStorage from '../useLocalStorage';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const NotesContext = createContext();
 
-export function NotesProvider({ children }) {
+export const NotesProvider = ({ children }) => {
   const [notes, setNotes] = useLocalStorage('notes', []);
-  const [currentNoteId, setCurrentNoteId] = useLocalStorage('currentNoteId', '');
-
-  // Get the current note
-  const currentNote = notes.find(note => note.id === currentNoteId) || null;
-
-  // Create a new note
-  const createNote = ({ title, content }) => {
+  const [currentNote, setCurrentNote] = useState({ id: '', title: '', content: '', lastEdited: null });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [editMode, setEditMode] = useState(false);
+  
+  const filteredNotes = notes.filter(note => 
+    note.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    note.content.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  const handleCreateNewNote = () => {
     const newNote = {
       id: Date.now().toString(),
-      title: title || 'Untitled Note',
-      content: content || '',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      title: 'New Note',
+      content: '',
+      lastEdited: new Date().toISOString()
     };
     
-    setNotes(prevNotes => [newNote, ...prevNotes]);
-    setCurrentNoteId(newNote.id);
-    return newNote;
+    setNotes([newNote, ...notes]);
+    setCurrentNote(newNote);
+    setEditMode(true);
   };
-
-  // Update a note
-  const updateNote = (id, updates) => {
-    setNotes(prevNotes => 
-      prevNotes.map(note => 
-        note.id === id 
-          ? { ...note, ...updates, updatedAt: new Date().toISOString() } 
-          : note
-      )
-    );
-  };
-
-  // Delete a note
-  const deleteNote = (id) => {
-    setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
+  
+  const handleSaveNote = () => {
+    if (!currentNote.id) return;
     
-    if (currentNoteId === id) {
-      const remainingNotes = notes.filter(note => note.id !== id);
-      setCurrentNoteId(remainingNotes.length > 0 ? remainingNotes[0].id : '');
+    const updatedNote = {
+      ...currentNote,
+      lastEdited: new Date().toISOString()
+    };
+    
+    const updatedNotes = notes.map(note => 
+      note.id === currentNote.id ? updatedNote : note
+    );
+    
+    setNotes(updatedNotes);
+    setCurrentNote(updatedNote);
+    setEditMode(false);
+  };
+  
+  const handleDeleteNote = (id) => {
+    const updatedNotes = notes.filter(note => note.id !== id);
+    setNotes(updatedNotes);
+    
+    if (currentNote.id === id) {
+      setCurrentNote({ id: '', title: '', content: '', lastEdited: null });
     }
   };
-
-  const value = {
-    notes,
-    currentNote,
-    currentNoteId,
-    setCurrentNoteId,
-    createNote,
-    updateNote,
-    deleteNote
+  
+  const handleNoteSelect = (note) => {
+    setCurrentNote(note);
+    setEditMode(false);
+  };
+  
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
   };
 
   return (
-    <NotesContext.Provider value={value}>
+    <NotesContext.Provider value={{
+      notes,
+      currentNote,
+      searchTerm,
+      editMode,
+      filteredNotes,
+      setNotes,
+      setCurrentNote,
+      setSearchTerm,
+      setEditMode,
+      handleCreateNewNote,
+      handleSaveNote,
+      handleDeleteNote,
+      handleNoteSelect,
+      formatDate
+    }}>
       {children}
     </NotesContext.Provider>
   );
-}
+};
 
-export function useNotes() {
-  return useContext(NotesContext);
-}
+export const useNotes = () => useContext(NotesContext);
