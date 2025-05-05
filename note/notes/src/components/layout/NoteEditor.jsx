@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Trash2, Edit, Save, Plus } from 'lucide-react';
 import { useNotes } from '../../contexts/NotesContext';
 import FormatToolbar from '../common/FormatToolbar';
-import renderMarkdown from '../../utils/markdown';
+// import renderMarkdown from '../../utils/markdown';
+import { MDXEditor } from '@mdxeditor/editor';
 
 const NoteEditor = () => {
   const { 
@@ -148,7 +149,8 @@ const NoteEditor = () => {
               />
             ) : (
               <div className="note-preview markdown-content">
-                <div dangerouslySetInnerHTML={{ __html: renderMarkdown(currentNote.content) }} />
+                {/* <div dangerouslySetInnerHTML={{ __html: renderMarkdown(currentNote.content) }} /> */}
+                <MDXEditor markdown= {currentNote.content} MDXEditor/>
               </div>
             )}
           </div>
