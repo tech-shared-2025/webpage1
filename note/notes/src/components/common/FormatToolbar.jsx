@@ -6,6 +6,13 @@ const FormatToolbar = ({ handleFormat }) => {
     <div className="format-toolbar">
       <button 
         className="toolbar-button" 
+        title="code"
+        onClick={() => handleFormat('code')}
+      >
+      
+      </button>
+      <button 
+        className="toolbar-button" 
         title="Bold"
         onClick={() => handleFormat('bold')}
       >
