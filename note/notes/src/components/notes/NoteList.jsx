@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Plus } from 'lucide-react';
+import { FiSearch, FiPlus } from 'react-icons/fi';
 import { useNotes } from '../../contexts/NotesContext';
 import NoteItem from './NoteItem';
 
@@ -14,7 +14,7 @@ const NoteList = () => {
   return (
     <>
       <div className="search-container">
-        <Search className="search-icon" size={16} />
+        <FiSearch className="search-icon" size={16} />
         <input
           type="text"
           placeholder="Search notes..."
@@ -35,7 +35,7 @@ const NoteList = () => {
               className="new-note-button"
               onClick={handleCreateNewNote}
             >
-              <Plus size={16} />
+              <FiPlus size={16} />
               New Note
             </button>
           </div>

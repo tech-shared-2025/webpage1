@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NotesProvider } from './contexts/NotesContext';
 import NoteList from './components/notes/NoteList';
-import NoteEditor from './components/layout/NoteEditor';
+import TagPanel from './components/tags/TagPanel';
+import Editor from './components/editor/Editor';
+import TopToolbar from './components/layout/TopToolbar';
 import './App.css';
 
 const App = () => {
@@ -24,11 +26,11 @@ const App = () => {
               <div className="theme-toggle-inner"></div>
             </div>
           </div>
+          <TopToolbar />
           <NoteList />
         </div>
-        <div className="main-content">
-          <NoteEditor />
-        </div>
+        <TagPanel />
+        <Editor />
       </div>
     </NotesProvider>
   );
