@@ -10,10 +10,10 @@ import {
   orderBy,
   getDocs,
 } from 'firebase/firestore';
-import { db } from './firebaseConfig';
-import { Portfolio, Position, Transaction, Stock } from '../types';
-import { INITIAL_BALANCE } from '../constants/config';
-import { getStockQuote } from './stockService';
+import { db } from 'src/services/firebaseConfig';
+import { Portfolio, Position, Transaction, Stock } from 'src/types';
+import { INITIAL_BALANCE } from 'src/constants/config';
+import { getStockQuote } from 'src/services/stockService';
 
 export const initializePortfolio = async (userId: string): Promise<void> => {
   const portfolioRef = doc(db, 'portfolios', userId);

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { FINNHUB_API_KEY } from '../config/env';
-import { Stock, StockQuote } from '../types';
+import { FINNHUB_API_KEY } from 'src/config/env';
+import { Stock, StockQuote } from 'src/types';
 
 const BASE_URL = 'https://finnhub.io/api/v1';
 

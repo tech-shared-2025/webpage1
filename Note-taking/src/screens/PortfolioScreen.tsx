@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Text, Card } from 'react-native-paper';
-import { COLORS, SPACING, TYPOGRAPHY } from '../constants/theme';
-import ScreenHeader from '../components/ScreenHeader';
+import { COLORS, SPACING, TYPOGRAPHY } from 'src/constants/theme';
+import ScreenHeader from 'src/components/ScreenHeader';
 
 const PORTFOLIO_POSITIONS = [
   {

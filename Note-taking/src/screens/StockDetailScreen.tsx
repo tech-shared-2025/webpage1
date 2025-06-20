@@ -9,18 +9,18 @@ import {
 } from 'react-native';
 import { Text, Card, Button, TextInput, Portal, Modal, IconButton } from 'react-native-paper';
 import { LineChart } from 'react-native-chart-kit';
-import { getStockQuote, getStockCandles, getCompanyProfile } from '../services/stockService';
-import { executeTransaction, getPortfolio } from '../services/portfolioService';
-import { addToWatchlist, removeFromWatchlist, isInWatchlist } from '../services/watchlistService';
-import { APP_COLORS } from '../constants/config';
-import { StockQuote } from '../types';
+import { getStockQuote, getStockCandles, getCompanyProfile } from 'src/services/stockService';
+import { executeTransaction, getPortfolio } from 'src/services/portfolioService';
+import { addToWatchlist, removeFromWatchlist, isInWatchlist } from 'src/services/watchlistService';
+import { APP_COLORS } from 'src/constants/config';
+import { StockQuote } from 'src/types';
 import {
   createPriceAlert,
   getPriceAlerts,
   deletePriceAlert,
   PriceAlert,
-} from '../services/alertService';
-import { COLORS, SPACING, TYPOGRAPHY } from '../constants/theme';
+} from 'src/services/alertService';
+import { COLORS, SPACING, TYPOGRAPHY } from 'src/constants/theme';
 
 // Temporary user ID for demo purposes
 const DEMO_USER_ID = 'demo_user';

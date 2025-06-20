@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { Searchbar, Text, Card, ActivityIndicator } from 'react-native-paper';
-import { COLORS, SPACING, TYPOGRAPHY } from '../constants/theme';
-import ScreenHeader from '../components/ScreenHeader';
+import { COLORS, SPACING, TYPOGRAPHY } from 'src/constants/theme';
+import ScreenHeader from 'src/components/ScreenHeader';
 
 const POPULAR_STOCKS = [
   { symbol: 'AAPL', name: 'Apple Inc.' },

@@ -6,9 +6,9 @@ import {
   arrayUnion,
   arrayRemove,
 } from 'firebase/firestore';
-import { db } from './firebaseConfig';
-import { getStockQuote } from './stockService';
-import { Stock } from '../types';
+import { db } from 'src/services/firebaseConfig';
+import { getStockQuote } from 'src/services/stockService';
+import { Stock } from 'src/types';
 
 export const initializeWatchlist = async (userId: string): Promise<void> => {
   const watchlistRef = doc(db, 'watchlists', userId);

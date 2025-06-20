@@ -1,18 +1,17 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { COLORS } from '../constants/theme';
+import { COLORS } from 'src/constants/theme';
 
-// Import screens (we'll create these next)
-import HomeScreen from '../screens/HomeScreen';
-import SearchScreen from '../screens/SearchScreen';
-import PortfolioScreen from '../screens/PortfolioScreen';
-import WatchlistScreen from '../screens/WatchlistScreen';
-import LearnScreen from '../screens/LearnScreen';
-import StockDetailScreen from '../screens/StockDetailScreen';
-import LeaderboardScreen from '../screens/LeaderboardScreen';
+// Import screens
+import HomeScreen from 'src/screens/HomeScreen';
+import SearchScreen from 'src/screens/SearchScreen';
+import PortfolioScreen from 'src/screens/PortfolioScreen';
+import WatchlistScreen from 'src/screens/WatchlistScreen';
+import LearnScreen from 'src/screens/LearnScreen';
+import StockDetailScreen from 'src/screens/StockDetailScreen';
+import LeaderboardScreen from 'src/screens/LeaderboardScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -76,28 +75,26 @@ const MainTabs = () => {
 
 const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen
+        name="StockDetail"
+        component={StockDetailScreen}
+        options={{
+          headerShown: true,
+          headerTitle: '',
+          headerBackTitle: 'Back',
+          headerTintColor: COLORS.primary,
+          headerStyle: {
+            backgroundColor: COLORS.surface,
+          },
         }}
-      >
-        <Stack.Screen name="MainTabs" component={MainTabs} />
-        <Stack.Screen
-          name="StockDetail"
-          component={StockDetailScreen}
-          options={{
-            headerShown: true,
-            headerTitle: '',
-            headerBackTitle: 'Back',
-            headerTintColor: COLORS.primary,
-            headerStyle: {
-              backgroundColor: COLORS.surface,
-            },
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+      />
+    </Stack.Navigator>
   );
 };
 

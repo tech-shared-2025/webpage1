@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Text, Card } from 'react-native-paper';
-import { COLORS, SPACING, TYPOGRAPHY } from '../constants/theme';
-import ScreenHeader from '../components/ScreenHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { COLORS, SPACING, TYPOGRAPHY } from 'src/constants/theme';
+import ScreenHeader from 'src/components/ScreenHeader';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <ScreenHeader
         title="Stock Simulator"
         subtitle="Welcome to your trading dashboard"
@@ -43,7 +44,7 @@ const HomeScreen = () => {
           </Card.Content>
         </Card>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

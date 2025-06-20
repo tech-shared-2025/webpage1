@@ -9,7 +9,7 @@ import {
   where,
   getDocs,
 } from 'firebase/firestore';
-import { db } from './firebaseConfig';
+import { db } from 'src/services/firebaseConfig';
 
 export interface PriceAlert {
   id: string;
